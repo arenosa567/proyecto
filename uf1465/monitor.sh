@@ -3,7 +3,8 @@
 of=/var/www/informesistema.html
 
 function informe(){
-  
+
+        echo'<meta charset="utf-8">' > $of
         echo " <h1>Informe Sistema</h1>" >> $of
         echo "<h3>$(date +"%d-%m-%Y:%H-%M")</h3>">> $of
         echo "<h3>Disco Principal</h3>" >> $of
@@ -21,7 +22,6 @@ function informe(){
         echo "<h3>MAC</h3>" >> $of
         mac=($(sudo ifconfig wlan0 | grep "Link"))
         echo "<h4> ${mac[4]} </h4>" >> $of
-   
 }
 informe
 #la linea de crontab
