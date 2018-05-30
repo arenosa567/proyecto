@@ -22,6 +22,25 @@ function informe(){
         echo "<h3>MAC</h3>" >> $of
         mac=($(sudo ifconfig wlan0 | grep "Link"))
         echo "<h4> ${mac[4]} </h4>" >> $of
+        echo "<h3>CPU</h3>" >> $of
+        echo "<ul>">>$of
+                cpu=($(sudo lscpu  | grep "Architecture:" ))
+                        echo "<li> <strong>Architectura:</strong> ${cpu[1]} </li>" >> $of
+                cpu1=($(sudo lscpu  | grep "CPU(s):" ))
+                        echo "<li> <strong>totalcpu:</strong> ${cpu1[1]} </li>" >> $of
+                cpu2=($(sudo lscpu  | grep "Vendor ID:" ))
+                       echo "<li> <strong>Vendor ID:</strong> ${cpu2[2]}</li>" >> $of
+                cpu3=($(sudo lscpu  | grep "Model name:" ))
+                       echo "<li> <strong>Model name:</strong> ${cpu3[2]} ${cpu3[3]} ${cpu3[4]} ${cpu3[5]} ${cpu3[6]} ${cpu3[7]} </li>" >> $of      
+                cpu4=($(sudo lscpu  | grep "L1i cache:" ))
+                       echo "<li> <strong>L1 cache:</strong> ${cpu4[2]} </li>" >> $of
+                cpu5=($(sudo lscpu  | grep "L2 cache:" ))
+                       echo "<li> <strong>L2 cache:</strong> ${cpu5[2]} </li>" >> $of
+                cpu6=($(sudo lscpu  | grep "L3 cache:" ))
+                       echo "<li> <strong>L3 cache:</strong> ${cpu6[2]} </li>" >> $of
+                cpu7=($(sudo lscpu  | grep "CPU MHz:" ))
+                       echo "<li> <strong>CPU MHz:</strong> ${cpu7[2]} </li>" >> $of
+         echo "</ul>" >> $of
 }
 informe
 #la linea de crontab
