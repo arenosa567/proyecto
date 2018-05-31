@@ -18,14 +18,11 @@ function servidornode(){
 } 
 
 function basedatos(){
-    cd /home/paco/Documentos/backups/basedato/
-    #wordpress
-    wp=$(mysqldump -u root -psecret wordpress)
-
-    echo $wp > wordpress.sql
+    
+    mysqldump -u root -psecret wordpress >/home/paco/Documentos/backups/basedato/wordress.sql
+  
     #clientes
-    cliente = $(mysqldump -u root -psecret clientes)
-    echo $cliente > clientes.sql
+   mysqldump -u root -psecret clientes >/home/paco/Documentos/backups/basedato/clientes.sql
 } 
 home
 servidorapache  
