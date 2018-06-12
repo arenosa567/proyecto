@@ -1,0 +1,76 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+body {
+    margin: 0px;
+    padding:0px;	
+	
+}
+/*ventana modal*/
+.modal-header{
+	background-color:yellow;
+	
+}
+#headermodal{
+	color: black;
+	text-align: center;
+	
+	
+}
+.close{
+	color: black;
+	font-weight: bold;
+}
+
+.modal-dialog{
+	margin: 6% auto;
+	
+}
+
+.modal-content{
+	border-radius: 15px;	
+}
+
+.modal-body{
+	background-color:black;
+}
+
+.modal-footer{
+	background-color: #1C0CE5;
+}
+.filtro{
+    text-align: center;
+}
+
+/*-----------fin tabla modal------------*/
+
+.text-primary{
+	font-size: 42px;
+	font-weight: bold;
+}
+
+/*------form-edit-------*/
+#formeditar{
+	border: 2px solid #230FCD;
+	border-radius: 5px;
+	margin:0px;
+	padding:10px 30px 10px 30px;
+	background-color: darkgrey;
+}
+/*-------------fin form-edit--------------*/
+
+/*------------form-----------------*/
+
+.form-control{
+	font-size: 18px;
+	font-weight: bold;
+}
+.form-group lavel{
+	font-size: 20px;
+	font-weight: bold;
+	color:#02022A;
+}
+
