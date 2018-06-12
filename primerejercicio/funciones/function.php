@@ -31,7 +31,7 @@ function piepagina($texto = ""){
 }
 
 function conexion(){
-		$connect = new mysqli('localhost','','','cursos');
+		$connect = new mysqli('localhost','usuariobd','passwordbd','basedatos');
 	if($connect->connect_error){
 		die("Connection failed: ". $mysqli->connect_errno);
 	}
