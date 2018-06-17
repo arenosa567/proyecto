@@ -13,8 +13,8 @@
 		</div>
 	</nav>
 	<div class="container">
-    <div class="filtro"></div>    
- 	<h1>Editar</h1><span class="filtro">Se ha incorpardo filtros para evitar dos emails y github iguales</span>
+    
+ 	<h1>Editar</h1><span class="filtro">Se ha incorpardo filtros para evitar dos emails y github iguales.</span>
 <!--</div>-->
 		
 	<?php

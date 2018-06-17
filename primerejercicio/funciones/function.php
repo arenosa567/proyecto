@@ -31,7 +31,7 @@ function piepagina($texto = ""){
 }
 
 function conexion(){
-		$connect = new mysqli('localhost','usuariobd','passwordbd','basedatos');
+		$connect = new mysqli('localhost','root','redes1234','cursos');
 	if($connect->connect_error){
 		die("Connection failed: ". $mysqli->connect_errno);
 	}
@@ -217,8 +217,16 @@ function insertar($tabla){
 		$connect = conexion();
 		validacionemail($tabla);
 		validacionurl($tabla);
+        $fecha = $_POST['fecnac'];
+         $fec = date("Y-m-d");
+        
+        
 		$insert =$connect->prepare("INSERT INTO $tabla VALUES (?,?,?,?,?,?)");
-		$insert->bind_param('isssss', $_POST['id'], $_POST['apellidos'], $_POST['nombre'],$_POST['fecnac'], $_POST['email'], $_POST['github']);
+        if(!empty($fecha)){
+		    $insert->bind_param('isssss', $_POST['id'], $_POST['apellidos'], $_POST['nombre'],$fecha,   $_POST['email'], $_POST['github']);
+        }else{
+            $insert->bind_param('isssss', $_POST['id'], $_POST['apellidos'], $_POST['nombre'],$fec, $_POST['email'], $_POST['github']);
+        }
 		$insert->execute();
 		$_SESSION["alumno"] = 'alumno '. $_POST["id"] .' Agregado';
 		ruta(header("Location: index.php"));
@@ -235,12 +243,17 @@ function update($tabla){
 		$connect = conexion();
 		validacionemail($tabla);
 		validacionurl($tabla);
+        $fecha = $_POST['fecnac'];
+        $fec = date("Y-m-d");
 		//$modificar =$connect->prepare("UPDATE $tabla SET apellidos= ?,nombre= ?,fecnac= ?,email= ?,github= ? WHERE id= ?");
 		$sql =("UPDATE $tabla SET apellidos= ?,nombre= ?,fecnac= ?,email= ?,github= ? WHERE id= ?");
 		$modificar = $connect->prepare($sql);
-		$modificar->bind_param('sssssi', $_POST['apellidos'], $_POST['nombre'], $_POST['fecnac'], $_POST['email'], $_POST['github'], $_GET['id']);
+        if(!empty($fecha)){
+		  $modificar->bind_param('sssssi', $_POST['apellidos'], $_POST['nombre'], $fecha,   $_POST['email'], $_POST['github'], $_GET['id']);
+        }else{
+          $modificar->bind_param('sssssi', $_POST['apellidos'], $_POST['nombre'], $fec, $_POST['email'],  $_POST['github'], $_GET['id']);
+        }
 		$modificar->execute();
-					
 		$_SESSION["alumno"] = 'alumno '. $_GET["id"] . ' '.$_POST['nombre']. ' '.$_POST['apellidos'].' actualizado';
 		ruta(header("Location: index.php?listado=alumnos"));
 		cerrar_conexion($modificar); //se cierra la sentencia

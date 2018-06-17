@@ -8,7 +8,8 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title " id="headermodal">INSERTAR</h4>
-          <div class="filtro">Se ha incorpardo filtros para evitar dos emails y github iguales</div>   
+          <div class="filtro">Se ha incorpardo filtros para evitar dos emails y github iguales</div> 
+          <div class="filtro">En el campo fecha, si de deja vacía devuelve la fecha de hoy. En caso contrario poner formato correcto(aaaa-mm-dd)</div>    
         </div>
         <div class="modal-body">
           <form method="post" action="insertar.php">
@@ -26,7 +27,7 @@
 			  </div>	  
 			  <div class="form-group">
 				  <!--<label for="fecnac">fecnac</label>-->  	  
-				  <input type="text" class="form-control" name="fecnac" placeholder="fecha nacimiento año-mes-dia" value="" required>
+				  <input type="text" class="form-control" name="fecnac" placeholder="fecha nacimiento aaaa-mm-dd" value="" >
 			  </div> 
 		      <div class="form-group">
 				  <!--<label for="email">email</label>-->		  

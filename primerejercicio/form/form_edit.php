@@ -18,7 +18,7 @@
 					?>">
 			  </div>	  
 			  <div class="form-group">
-				  <label for="fecnac">fecnac</label>  	  
+				  <label for="fecnac">fecnac.(En el campo fecha, si de deja vacía devuelve la fecha de hoy. En caso contrario poner formato correcto(aaaa-mm-dd))</label>  	  
 				  <input type="text" class="form-control" name="fecnac" value="<?php echo $fecnac ?>">
 			  </div> 
 		      <div class="form-group">
