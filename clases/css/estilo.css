@@ -1,0 +1,90 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+body {
+    margin: 0px;
+    padding:0px;	
+	
+}
+
+#pagina{
+    margin:0px 0px 0px 20%;
+}
+/*ventana modal*/
+.modal-header{
+	background-color:yellow;
+	
+}
+#headermodal{
+	color: black;
+	text-align: center;
+	
+	
+}
+.close{
+	color: black;
+	font-weight: bold;
+}
+
+.modal-dialog{
+	margin: 6% auto;
+	
+}
+
+.modal-content{
+	border-radius: 15px;	
+}
+
+.modal-body{
+	background-color:black;
+}
+
+.modal-footer{
+	background-color: #1C0CE5;
+}
+.filtro{
+    text-align: center;
+}
+
+/*-----------fin tabla modal------------*/
+
+.text-primary{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
+/*------form-insertar-------*/
+.form{
+    border: 2px solid #230FCD;
+	border-radius: 5px;
+	/*margin: 2px 0px 2px 10px;*/
+    margin:auto;
+	padding:1px 15px 3px 15px;
+	background-color: darkgrey;
+    width: 50%;
+}
+/*-------------fin form-insertar--------------*/
+/*------------form-----------------*/
+
+.form-control{
+	font-size: 18px;
+	font-weight: bold;
+}
+.form-group label{
+	font-size: 12px;
+	font-weight: bold;
+	color:#02022A;
+}
+/*------------fin form--------*/
+/*--------------------nav sidebar------------*/
+#fixed-sidebar{
+    max-width: 100%;
+    color: black;
+   
+    height: 100;
+    margin:2px 0 2px 0;
+}
