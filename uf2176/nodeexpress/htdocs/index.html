@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">    
+<title>Documento</title>
+</head>
+
+<body>
+    <div class="container">
+        <button onclick="select()">select</button>
+         <button onclick="describe()">describe</button>
+        <button onclick="nuevo()">nuevo</button>
+        <ol id="respuesta"></ol>
+        <form class="form">
+                <input type="text" id="idblogs" placeholder="idblogs" hidden>
+        
+                <label for="">titulo
+            <input id="titulo" placeholder="titulo"></label>
+        
+                <label for="">autor
+            <input id="autor" placeholder="autor"></label>
+        
+                <label for="">editorial
+            <input id="editorial" placeholder="editorial"></label>
+        
+                <label for="">categoria    
+            <input id="categoria" placeholder="categoria"></label>
+        
+                <label for="">fecha
+            <input id="fecha" placeholder="fecha" value=""></label>
+        
+                <label for="">contenido 
+            <input id="contenido" placeholder="contenido"></label>
+        
+                <label for="">imagen
+            <input id="imagen" placeholder="imagen"></label>
+            
+        </form>   
+        <br>
+        <button onclick="grabar()">grabar</button>
+        <button onclick="borrar()">borrar</button>
+        <button onclick="nuevo()">nuevo</button>
+    </div>   
+</body>
+</html>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>   
+
+
+<script>
+    function nuevo(){
+        //recargo la pagina
+        location.reload();
+    }
+    function grabar(){
+        //evitar la duplicacion
+           $("#respuesta").html("");
+           // location.reload();
+           nuevo();
+        datos = {idblogs:$('#idblogs').val(),
+                 titulo:$('#titulo').val(),
+                 autor:$('#autor').val(),
+                 editorial:$('#editorial').val(),
+                 categoria:$('#categoria').val(),
+                 fecha:$('#fecha').val(),
+                 contenido:$('#contenido').val(),
+                 imagen:$('#imagen').val()}
+        $.ajax({
+            beforeSend:(request) =>{
+            request.setRequestHeader('Content-type','application/json');
+            },
+            //url:'hppt://ip server/grabar'
+            url:'http://localhost:3000/grabar',
+            type:'post',
+            data:JSON.stringify(datos),
+            dataType:'json',
+            success:function(d){select()} //si sale todo bien que vuelva a aparecer
+        })
+    }
+    
+    function borrar(){
+        //evitar la duplicacion
+           $("#respuesta").html("");
+           //location.reload();
+            nuevo();
+        datos = {idblogs:$('#idblogs').val(),
+                 titulo:$('#titulo').val(),
+                 autor:$('#autor').val(),
+                 editorial:$('#editorial').val(),
+                 categoria:$('#categoria').val(),
+                 fecha:$('#fecha').val(),
+                 contenido:$('#contenido').val(),
+                 imagen:$('#imagen').val()}
+        $.ajax({
+            beforeSend:(request) =>{
+            request.setRequestHeader('Content-type','application/json');
+            },
+            //url:'hppt://ip server/grabar'
+            url:'http://localhost:3000/borrar',
+            type:'post',
+            data:JSON.stringify(datos),
+            dataType:'json',
+            success:function(d){select()} //si sale todo bien que vuelva a aparecer
+        })
+    }
+    
+    
+    function select(){
+           
+        $.ajax({
+                    
+            url:'/select/blogs',
+                
+            //success: function(data){console.log(data)}
+            //success:dibujarlista //como es un callback solo se pone el nombre funcion sin ()
+            success: function(d){
+                //d.each(function(fila){$("#respuesta").append(fila.titulo)})
+                //$:each(array, funcion callback(indice, datos devuelve o elemento o objetos))
+                //$.each(d,function(i, fila){$("#respuesta").append('<li>' + fila.titulo + ' - ' + fila.autor + ' - ' + fila.editorial + '</li>') });
+               $.each(d,function(i, fila){
+                   $('<li />', {
+                       text:" titulo: " + " " + fila.titulo + " ; "+" autor: " + " "+ fila.autor + " ; "+" editorial: " + " " + fila.editorial + " ; "+" categoria: " + " " + fila.categoria + " ; "+ " fecha: " + " " + fila.fecha + " ; "+
+                       " contenido: " + " " + fila.contenido + " ; "+" imagen: " + " " + fila.imagen,
+                                               
+                       click: function(){
+                           $('#idblogs').val(fila.idblogs);
+                           $('#titulo').val(fila.titulo);
+                           $('#autor').val(fila.autor);
+                           $('#editorial').val(fila.editorial);
+                           $('#categoria').val(fila.categoria);
+                           $('#fecha').val(fila.fecha);
+                           $('#contenido').val(fila.contenido);
+                           $('#imagen').val(fila.imagen);
+                        }
+                               }).appendTo('#respuesta');
+                   
+                });
+            }
+        });
+    }
+    function describe(){
+           
+        $.ajax({
+                  
+            url:'/describe/blogs',
+             
+           success: function(data){console.log(data)}
+            
+        });
+    }
+    
+    
+    
+
+</script>  
