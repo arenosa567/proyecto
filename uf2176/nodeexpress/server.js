@@ -18,8 +18,8 @@ const bodyParser=require('body-parser');
 const conn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'redes1234',
-    database: 'blog'
+    password: 'tupassword',
+    database: 'tubasededatos'
 });
 conn.connect();
 app.use(express.static('htdocs') ); //lo que ponga en public lo considera raiz
