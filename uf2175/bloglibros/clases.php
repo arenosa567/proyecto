@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $conexion = new mysqli('localhost','root','redes1234','blog');
+    $conexion = new mysqli('localhost','root','tupassword','tubasedatos');
     
 	if($conexion->connect_error){
 		die("Error conexión: ". $mysqli->connect_errno);
