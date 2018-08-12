@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $conexion = new mysqli('localhost','root','tupassword','tubasedatos');
+    $conexion = new mysqli('localhost','root','redes1234','blog');
     
 	if($conexion->connect_error){
 		die("Error conexión: ". $mysqli->connect_errno);
@@ -128,23 +128,32 @@
                
 				
                 if(isset($_POST["orden"])){
-					if($_POST["orden"] == "autor"){
-						$ssql .= " order by autor desc";
-					}elseif($_POST["orden"] == "titulo"){
-						$ssql .= " order by titulo ";
-                    }elseif($_POST["orden"] == "editorial"){
-						$ssql .= " order by editorial "; 
-                    }elseif($_POST["orden"] == "categoria"){
-						$ssql .= " order by categoria";
-					}elseif($_POST["orden"] == "fechamasvieja"){
-						$ssql .= " order by fecha";
-				    }elseif($_POST["orden"] == "fechamasnueva"){
-						$ssql .= " order by fecha desc";
+                    switch($_POST["orden"]){
+                        case "autor":
+                          $ssql .= " order by autor desc";
+                          break; 
+                        case "titulo":
+                          $ssql .= " order by titulo desc";
+                          break;   
+                        case "editorial":
+                          $ssql .= " order by editorial desc";
+                          break;   
+                        case "categoria":
+                          $ssql .= " order by categoria desc";
+                          break;   
+                        case "fechamasvieja":
+                          $ssql .= " order by fecha";
+                          break;   
+                        case "fechamasnueva ":
+                          $ssql .= " order by fecha desc";
+                          break;   
                     }
+					                
              $ssql = $conexion->query($ssql);
+                }
                 //$conexion->close();    
                return $ssql;
-            }
+            
         }
     }
     
