@@ -4,6 +4,6 @@
 		    <script type="text/javascript" src="js/confirmardelete.js"></script>
             <script>
                 function recargar(){
-                    locaction.reload();
+                    location.reload();
                 }
             </script>

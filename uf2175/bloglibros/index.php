@@ -8,18 +8,18 @@ include("include/header.php");
         <nav class="navbar navbar-inverse">	
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <li ><a data-toggle="modal" data-target="#myModal" onClick="recargar()" class="boton" href="form/formulario.php">insertar</a></li>
+                    <li ><a data-toggle="modal" data-target="#myModal"  class="boton" href="form/formulario.php">insertar</a></li>
                     
-                    <li><a href="index.php">resetear</a></li>
+                    <li><a href="index.php" onClick="recargar()">Recargar</a></li>
                     
-                    <li><a class="boton" onClick="recargar()" href="listado.php?x=lista&pagina=1">listado</a></li>
+                    <li><a class="boton"  href="listado.php?x=lista&pagina=1">listado</a></li>
                              
-                    <li><a class="boton1" onClick="recargar()" href="form/formbuscar.php">Búsqueda avanzada</a></li>
+                    <li><a class="boton1"  href="form/formbuscar.php">Búsqueda avanzada</a></li>
                     
-                    <li><a class="boton" onClick="recargar()"
-                    href="form/formListFila.php">listar_modificar_borrar_registro</a></li>
+                    <li><a class="boton" href="form/formListFila.php">modificar_borrar_registro</a></li>
+                   
                     
-                    <!--<li><a  href="../../index.php">PágPrincipal</a></li>-->
+                    <li><a  href="../../index.php">PágPrincipal</a></li>
                
                </ul>
                 
@@ -38,7 +38,7 @@ include("include/header.php");
                                        if(isset($_POST["buscar"])){
                                     include("form/formbuscar.php");
                                        }
-                                    //include("update.php");
+                                    
                                     ?>
                         </div>
                                     
@@ -69,10 +69,6 @@ include("include/header.php");
                 
                 }
                     include("update.php");
-                    
-                    
-                        include("listfila.php");
-                        
                     
                     include("delete.php");
                      
