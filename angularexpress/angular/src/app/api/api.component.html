@@ -1,0 +1,96 @@
+<!--como separar esas dos secciones, crear una propiedad componente api se llame identificación-->
+<!--===============================================
+        Login
+===================================================-->
+<!--si todavia no se ha logueado-->
+<section *ngIf=!identificado id="login">
+    <!--para utilizar two way data binding onSubmit lo creamos en api.components.ts -->
+    <form #formIngreso ="ngForm" (ngSubmit) ="onSubmit()">
+        <h1>Login</h1>
+        
+        <hr>
+        <!--obligar que rellene el campo despues de salir del campo si no se escribio nada usuario.touched(usuario ha sido tocado) !usuario.valid(no ha sido lleno) con [ngStyle] se crean estilos propios de angular-->
+        <span *ngIf ="usuario.touched && !usuario.valid"
+              [ngStyle] ="{'color':'red','font-size':'14px','margin':'20px'}"> *Favor llenar este campo</span>  
+                                                                    
+                                                                    
+        <!--Directiva Two way data Bindind: lo que se defina en la vista, se define en el componente, lo que se define en el componente se define en la vista, al mismo tiempo y en tiempo real, con ngModel (vamos a enviar la informacion al modelo) y ese modelo representado [(ngModel)] lo va a recibir la propiedad listaUsuarios.usuarios o password-->
+        <input type="text" placeholder="Usuario" name ="usuario" #usuario="ngModel" [(ngModel)] = listaUsuarios.usuario required>
+        <span *ngIf ="password.touched && !password.valid"
+              [ngStyle] ="{'color':'red', 'font-size':'14px','margin':'20px'}"> *Favor llenar este campo</span>
+                                                            
+        <input type="password" placeholder="Contraseña" name ="password" #password="ngModel" [(ngModel)] = listaUsuarios.password required>
+        <input type="submit" value="enviar">
+        <!--mensaje cuando se ingresa usuario y contraseña invalida-->
+        <div *ngIf="validarIngreso" style="text-align: center">
+            <!--mensaje que traiga desde api rest a traves api.component.ts-->
+            <div style="color:red; margin-bottom: 10px ">{{mensaje}}</div>
+            
+        
+        </div>
+    
+    </form>
+    <!--pongo la ruta especificado en app-routing-module.ts-->
+    <a [routerLink]="['/']"><button class="btn-frontend">regresar menú principal</button></a>
+</section>    
+
+<!--===============================================
+ cuando el usuario se loguee entre en el backend
+===================================================--> 
+ <!--si ha identificado-->   
+<section *ngIf=identificado id="backend">
+    <a [routerLink]="['/']"><button class="btn-frontend">regresar menú principal</button></a>
+    
+    <div id="cabezote">
+        
+        <h3>Hola {{usuario}}</h3>
+
+        <button (click)="cerrarSesion()">Cerrar Sesión</button> 
+    </div>
+    
+    <hr>
+    <!--traernos lo que tenemos que gestionar trernos las etiquetas del slide y galerias de index-component.html -->
+    
+    <!--=====================================
+	SLIDESHOW  
+	======================================-->
+    <!--agregar nueva foto-->
+    <div class="gestores">
+        
+          <h1>Gestor o Crear Slide tamaño 1024x349 pixels</h1>
+        <!--realizamos el two data binding para traernos las propiedades con ngForm y ngModel, -->
+        <form #formSlides ="ngForm" (ngSubmit) ="nuevoSlide()">
+        <!--y lo relacionamos con [(ngModel)]="itemSlides.titulo" que viene del modelo-->
+            <input type="text" placeholder="Título....." name="titulo" #titulo="ngModel" [(ngModel)]="itemSlides.titulo" required>
+            
+            <textarea maxlength="55" placeholder="Descripcion....." name="descripcion" #titulo="ngModel" [(ngModel)]="itemSlides.descripcion" required></textarea>
+            
+            <!--enviar un archivo desde angular al apirest utilizo atributo(change)="metodo de angular" lo creo esa funcion o motodo de angular en api.component.ts-->
+            <input type="file" (change)="cargarFichero($event)" required>
+            <input type="submit" value="Enviar">
+            <div *ngIf ="validarIngreso" style="text-align: center" >
+               <div style="color:red; margin-bottom: 10px "> {{mensaje}} </div>
+            </div>
+        </form>
+    
+    </div>
+        <app-slide></app-slide>
+	
+	<!--=====================================
+	GALERIA 
+	======================================-->
+	    <!--agregar nueva foto-->
+    <div class="gestores">
+        
+          <h1>Gestor Galería tamaño 226x154 pixels</h1>  
+        <form #formGalerias ="ngForm" (ngSubmit) ="nuevaFotoGaleria()">
+                    
+            <input type="file" (change)="cargarFichero($event)" required>
+            <input type="submit" value="Enviar">
+        
+        </form>
+    
+    </div>
+	    <app-galeria></app-galeria>
+	
+</section>    

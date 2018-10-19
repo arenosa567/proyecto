@@ -1,0 +1,43 @@
+/*variables de tipo objeto {"propiedad":[{"propiedad":[{"propiedad":"valor","propiedad":"valor"},{"propiedad":"valor","propiedad":"valor"}]},{"propiedad":[{"propiedad":"valor","propiedad":"valor" },{"propiedad":"valor","propiedad":"valor" }]}]}*/
+
+{
+    "Tienda":[
+        {
+            //objeto
+           "Frutas":[
+               {
+                   "Nombre":"Manzana",
+                   "Cantidad":10,
+                   "Precio": "€2"
+               },
+               {
+                   "Nombre":"Pera",
+                   "Cantidad":20
+               },
+               {
+                    "Nombre":"Naranja",
+                    "Cantidad":30
+               }
+           ] 
+        },
+        
+        {
+            //crear otro objeto
+           "Verduras":[
+               {
+                   "Nombre":"Lechuga",
+                   "Cantidad":80
+               },
+               {
+                   "Nombre":"Tomate",
+                   "Cantidad":15
+               },
+               {
+                   "Nombre":"Pepino",
+                   "Cantidad":50
+               }
+           ] 
+        } 
+    ]
+    
+}
