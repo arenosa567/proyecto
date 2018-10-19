@@ -5,28 +5,28 @@
     <li>npm install nodemon -g</li>
     <li>express>npm install body-parse --save</li>
     <li>express>npm install mongodb --save</li>
-    <li>subir archivos al servidor</li>
-    <ol>
-        <li>express>npm install connect-multiparty --save</li>
-    
-    </ol>
     <li>express>npm install mongoose --save </li>
-    <li>ecriptar el password</li>
-    <ol>
-        <li>express>npm install bcrypt-nodejs --save</li>
     
-    </ol>
-        <li>token</li>
-    <ol>
-        <li>express>npm install jwt-simple --save</li>
-        <li>instalar moment (fecha de creacion y expiracion</li>
-            <ol>
-                <li>express>npm install moment --save</li>
-            
-            </ol>
-    
-    </ol>
 </ol>
+    <h2>Subir archivos al servidor</h2>
+<ol>
+    <li>express>npm install connect-multiparty --save</li>
+    
+</ol>
+    <h2>Encriptar el password</h2>
+    
+<ol>
+    <li>express>npm install bcrypt-nodejs --save</li>
+    
+</ol>
+    <h3>Instalar el token y el moment(fecha de creación y expiración del token</h3>
+        
+<ol>
+    <li>express>npm install jwt-simple --save</li>
+    <li>express>npm install moment --save</li>
+
+</ol>
+
 <p>navegador localhost:1234</p>
 <h1>instalar angular cli</h1>
 
